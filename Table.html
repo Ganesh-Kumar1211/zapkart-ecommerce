@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+             body{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+             }
+
+
+
+
+              .table{
+
+                   display: grid;
+                   grid-template-columns: auto auto auto auto auto;
+                   gap: 5px;
+                   background-color: red;
+                   padding: 10px; 
+
+              }
+
+              .table>div{
+
+                background-color: aqua;
+                padding: 10px;
+                font-size: 40px;
+                text-align: center;
+              
+              }
+
+            .title{
+              grid-column: 1/span 3;grid-row: 1;
+            }
+
+ 
+
+           .A { grid-column: 4;grid-row: 1; }
+           .B { grid-column: 5;grid-row: 1; }
+           .C{ grid-row:1;grid-row: 2/span 3; }  
+
+           .D { grid-column: 2;grid-row: 2; }
+           .E { grid-column: 3;grid-row: 2; }
+           .F { grid-column: 4;grid-row: 2; }
+           .G{ grid-column: 5;grid-row: 2; }
+           
+           .H { grid-column: 2;grid-row: 3; }
+           .I { grid-column: 3/span 2 ;grid-row: 3; }
+           .J{ grid-column: 5; grid-row: 3/span 2; }
+          
+           .K { grid-column: 2;grid-row: 4; }
+           .L { grid-column: 3; grid-row: 4;}
+           .M{ grid-column: 4;grid-row: 4; }
+           .N { grid-column: 1; grid-row: 5; }
+           .O{ grid-column: 2/span 4;grid-row: 5;}
+
+           @media screen and (max-width:420px) {
+            .table{
+
+                   display: grid;
+                   grid-template-columns: auto auto auto auto auto;
+                   gap: 1px;
+                   background-color: red;
+                   padding: 1px;
+                  
+
+              }
+
+              .table>div{
+
+                background-color: aqua;
+                padding: 1px;
+                font-size: 20px;
+                text-align: center;
+             
+              
+              }
+          
+            
+           }
+    </style>
+</head>
+<body>
+    
+        <div class="table">
+         
+
+      <div class="item title">Title goes here</div>
+      <div class="item A">A</div>
+      <div class="item B">B</div>
+      <div class="item C">C</div>
+      <div class="item D">D</div>
+      <div class="item E">E</div>
+      <div class="item F">F</div>
+      <div class="item G">G</div>
+      <div class="item H">H</div>
+      <div class="item I">I</div>
+      <div class="item J">J</div>
+      <div class="item K">K</div>
+      <div class="item L">L</div>
+      <div class="item M">M</div>
+      <div class="item N">N</div>
+      <div class="item O">O</div>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

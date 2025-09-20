@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    body{
+       background: linear-gradient(180deg, #febd69 0%, #f3f5f8 100%);
+    }
+    header {
+      background-color: #131921;
+      color: rgb(246, 243, 243);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 22px;
+    }
+    header .icons {
+      position: absolute;
+      left: 10px;  /* pushes logo to very left side */
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    header .logos {
+      width: 24px;   /* slightly larger */
+      height: auto;
+      display: block;
+    }
+
+    :root{
+      --bg:#f7f7f9;
+      --card-bg: #ffffff;
+      --muted:#8b8b8b;
+      --accent-start: #29d8d1;
+      --accent-end: #d46be7;
+      --input-border: #e5e5e6;
+      --shadow: 0 4px 12px rgba(30,30,30,0.06);
+    }
+
+  
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .card{
+      width: 90%;
+      max-width:260px;
+      background:var(--card-bg);
+      border-radius:10px;
+      padding:24px 24px 32px;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    .title{
+      text-align:center;
+      font-size:28px;
+      font-weight:700;
+      margin:0 0 20px;
+      color:#2b2b2b;
+    }
+
+    label.field-label{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin:10px 0 6px;
+      font-weight:600;
+    }
+
+    .input-row{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .input-row svg.icon{
+      width:16px;
+      height:16px;
+      opacity:0.6;
+      flex:0 0 18px;
+    }
+
+    input[type="text"], input[type="password"]{
+      width:100%;
+      border:0;
+      outline:none;
+      padding:8px 6px;
+      font-size:14px;
+      color:#333;
+      background:transparent;
+    }
+
+    .underline{
+      border-bottom:1px solid var(--input-border);
+      margin-bottom:4px;
+      padding-bottom:2px;
+    }
+
+    .forgot{
+      text-align:right;
+      font-size:12px;
+      margin-top:4px;
+      color:var(--muted);
+    }
+    .forgot a{
+      color:#555;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .btn-login{
+      display:block;
+      width:100%;
+      margin:18px 0 14px;
+      padding:10px;
+      border-radius:30px;
+      border:0;
+      font-weight:600;
+      font-size:14px;
+      letter-spacing:0.6px;
+      color:#fff;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+      box-shadow: 0 4px 12px rgba(192,82,255,0.12);
+      cursor:pointer;
+    }
+
+    .signup{
+      text-align:center;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:500;
+    }
+    .signup a{
+      margin-top:6px;
+      font-weight:600;
+      color:#444;
+      text-decoration:none;
+      font-size:13px;
+    }
+
+    @media (max-width:480px){
+      .card{
+        padding:20px 18px 28px;
+        max-width:300px;
+      }
+      .title{ font-size:26px; }
+    }
+
+
+      footer {
+      margin-top: 30px;
+      text-align: center;
+      padding: 15px;
+      background: #131921;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header> 
+              
+    <div class="icons">
+      <a href="kitchenn.html">
+        <img src="mobiles/home (1).png" alt="Home" class="logos" />
+
+      </a>
+      </div>
+      ZapKart.in
+  </header>
+
+  <div class="wrap">
+    <form class="card" onsubmit="event.preventDefault(); alert('Login clicked');">
+      <div class="title">Login</div>
+
+      <label class="field-label">Username</label>
+      <div class="underline">
+        <div class="input-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="#9aa1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 20a8 8 0 0116 0" stroke="#9aa1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input type="text" placeholder="Username" aria-label="username" />
+        </div>
+      </div>
+
+      <label class="field-label">Password</label>
+      <div class="underline">
+        <div class="input-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.5" y="10" width="17" height="10" rx="2.5" stroke="#9aa1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 10V7a5 5 0 0110 0v3" stroke="#9aa1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input type="password" placeholder="Password" aria-label="password" />
+        </div>
+      </div>
+
+      <div class="forgot"><a href="#">Forgot password?</a></div>
+
+      <button class="btn-login" type="submit">LOGIN</button>
+
+      <div class="signup"><a href="#">SIGN UP</a></div>
+    </form>
+  </div>
+
+  <footer>
+
+     © 2025 Customer Service | All rights reserved
+  </footer>
+
+
+
+</body>
+</html>

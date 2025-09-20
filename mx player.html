@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>E-commerce Nav with MX Player Login</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root{
+      --primary:#ff6b01;
+      --dark:#111827;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.06);
+      --radius:12px;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#f6f7fb,#fff);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* NAVBAR */
+    .topbar{
+      width:100%;
+      background: #0f1724;
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 6px 18px rgba(2,6,23,0.15);
+    }
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:12px 20px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    /* left area: logo + nav links */
+    .left {
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .logo {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      text-decoration:none;
+      color:white;
+    }
+    .logo img {
+      width:44px;
+      height:44px;
+      object-fit:cover;
+      border-radius:8px;
+      background:linear-gradient(135deg,var(--primary),#ff8a3d);
+      padding:6px;
+    }
+    .logo h1{
+      font-size:18px;
+      margin:0;
+      letter-spacing:0.3px;
+      font-weight:700;
+    }
+    nav.nav-links{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    nav.nav-links a{
+      color:rgba(255,255,255,0.92);
+      text-decoration:none;
+      font-weight:500;
+      padding:6px 10px;
+      border-radius:8px;
+      transition:background .18s, transform .12s;
+    }
+    nav.nav-links a:hover{
+      background:rgba(255,255,255,0.04);
+      transform:translateY(-1px);
+    }
+
+    /* center: search */
+    .search {
+      flex:1;
+      max-width:560px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border-radius:999px;
+      margin:0 16px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .search input{
+      flex:1;
+      background:transparent;
+      border:0;
+      color:#fff;
+      outline:none;
+      padding:6px 8px;
+      font-size:14px;
+    }
+    .search button{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font-size:16px;
+      cursor:pointer;
+      padding:6px;
+    }
+
+    /* right area: icons & MX button */
+    .right {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .icon-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:transparent;
+      border:0;
+      color:rgba(255,255,255,0.95);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .icon-btn:hover{ background: rgba(255,255,255,0.03); transform:translateY(-2px); }
+
+    /* prominent MX button */
+    .mx-btn {
+      background:linear-gradient(90deg,var(--primary),#ff8a3d);
+      color:white;
+      padding:9px 14px;
+      border-radius:14px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: 0 8px 22px rgba(255,107,1,0.16);
+    }
+    .mx-btn i { font-size:18px; }
+
+    /* small responsive behavior */
+    @media (max-width:880px){
+      nav.nav-links { display:none; }
+      .search { display:none; }
+      .logo h1 { display:none; }
+    }
+
+    /* Demo page content */
+    .hero{
+      max-width:1200px;
+      margin:28px auto;
+      padding:28px 20px;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+    }
+    .card{
+      background:white;
+      border-radius:12px;
+      padding:20px;
+      box-shadow:0 8px 30px rgba(16,24,40,0.06);
+    }
+
+    /* Modal (demo login) */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(2,6,23,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+      padding:20px;
+    }
+    .modal{
+      width:100%;
+      max-width:420px;
+      background:linear-gradient(180deg,#0b1220,#07101a);
+      border-radius:14px;
+      padding:18px;
+      color:white;
+      box-shadow:0 18px 50px rgba(2,6,23,0.5);
+    }
+    .modal h2{margin:0 0 12px 0;font-size:20px}
+    .modal p{margin:0 0 18px 0;color:var(--muted)}
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:12px;
+    }
+    .field input{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+      color:#fff;
+      outline:none;
+    }
+    .modal .actions{
+      display:flex;
+      gap:8px;
+      justify-content:flex-end;
+      margin-top:8px;
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:8px 12px;
+      border-radius:10px;
+      color:white;
+      cursor:pointer;
+    }
+    .btn-primary{
+      background:var(--primary);
+      border:0;
+      padding:8px 14px;
+      border-radius:10px;
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    /* small helpers */
+    .muted { color:var(--muted); font-size:13px;}
+    .small { font-size:13px; color:rgba(255,255,255,0.85); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="topbar" role="banner">
+    <div class="container" role="navigation" aria-label="Main navigation">
+      <div class="left">
+        <a class="logo" href="#" title="Go to homepage">
+          <!-- Replace src with your logo -->
+          <img src="https://images.unsplash.com/photo-1602526438930-8f3b4b439a0f?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Site logo">
+          <div>
+            <h1>ShopWave</h1>
+            <div class="small muted">Electronics • Fashion • Home</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Secondary">
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">Deals</a>
+          <a href="#">Categories</a>
+        </nav>
+      </div>
+
+      <div class="search" role="search">
+        <input id="search-input" type="search" placeholder="Search for products, brands and more..." aria-label="Search products">
+        <button aria-label="Search button"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+
+      <div class="right">
+        <button class="icon-btn" title="Orders"><i class="fa-solid fa-box"></i> Orders</button>
+        <button class="icon-btn" title="Wishlist"><i class="fa-regular fa-heart"></i></button>
+        <button class="icon-btn" title="Cart"><i class="fa-solid fa-cart-shopping"></i></button>
+
+        <!-- MX Player button -->
+        <button id="mxOpen" class="mx-btn" title="Login to MX Player">
+          <i class="fa-solid fa-play"></i>
+          Login MX Player
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SAMPLE PAGE CONTENT -->
+  <main>
+    <section class="hero" aria-labelledby="intro">
+      <div class="card">
+        <h2 id="intro">Welcome to ShopWave</h2>
+        <p class="muted">This demo shows a navigation header with a prominent MX Player login button. Clicking it opens the MX Player site in a new tab and also shows a demo login modal on this page.</p>
+
+        <hr style="margin:16px 0;border:none;border-top:1px solid #eee">
+
+        <h3>How it works</h3>
+        <ul>
+          <li>Top-right <strong>Login MX Player</strong> opens the real MX Player login page in a new tab (if allowed) and also reveals a demo modal here for quick login UX testing.</li>
+          <li>Replace the MX Player link in the script if you want another URL.</li>
+        </ul>
+      </div>
+
+      <aside class="card">
+        <h4>Quick actions</h4>
+        <p class="muted">Try the MX Player login button in the header to see behavior.</p>
+        <div style="height:12px"></div>
+        <button class="mx-btn" id="mxOpenAside"><i class="fa-solid fa-play"></i> Login MX Player</button>
+      </aside>
+    </section>
+  </main>
+
+  <!-- DEMO LOGIN MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">MX Player — Demo Login</h2>
+      <p class="muted">This is a demo login form integrated into your ecommerce site. For a real redirect, we open MX Player in a new tab too.</p>
+
+      <form id="demoLogin">
+        <div class="field">
+          <label class="small" for="email">Email or phone</label>
+          <input id="email" name="email" type="text" placeholder="you@example.com or +91 98765 43210" required>
+        </div>
+
+        <div class="field">
+          <label class="small" for="pwd">Password</label>
+          <input id="pwd" name="pwd" type="password" placeholder="Password" required>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="muted">Don't have an account? <a href="#" style="color:var(--primary);text-decoration:none;">Sign up</a></div>
+        </div>
+
+        <div class="actions" style="margin-top:16px;">
+          <button type="button" class="btn-ghost" id="cancelModal">Cancel</button>
+          <button type="submit" class="btn-primary">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // MX Player real URL - change if you prefer another region URL
+    const MX_PLAYER_LOGIN_URL = 'https://www.mxplayer.in'; // or 'https://www.mxplayer.com'
+
+    const mxOpenBtns = [document.getElementById('mxOpen'), document.getElementById('mxOpenAside')];
+    const backdrop = document.getElementById('modalBackdrop');
+    const cancelModal = document.getElementById('cancelModal');
+    const demoLogin = document.getElementById('demoLogin');
+
+    function openMxPlayer() {
+      // Try to open MX Player in a new tab
+      try {
+        // window.open will create a new tab; many sites have X-Frame restrictions so we open new tab/window
+        window.open(MX_PLAYER_LOGIN_URL, '_blank', 'noopener,noreferrer');
+      } catch (e) {
+        console.warn('Failed opening external site:', e);
+      }
+
+      // Show demo login modal on the page for quick UX
+      backdrop.style.display = 'flex';
+      backdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    mxOpenBtns.forEach(btn => {
+      if (!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openMxPlayer();
+      });
+    });
+
+    cancelModal.addEventListener('click', () => {
+      backdrop.style.display = 'none';
+      backdrop.setAttribute('aria-hidden', 'true');
+    });
+
+    // Close modal on backdrop click (outside modal)
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        backdrop.style.display = 'none';
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Demo login handler
+    demoLogin.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      // Simple demo feedback - replace with real auth flow
+      alert(`Demo sign-in for: ${email}\n(This is a demo - integrate real auth.)`);
+      backdrop.style.display = 'none';
+      backdrop.setAttribute('aria-hidden', 'true');
+    });
+
+    // Accessibility keyboard shortcut to close modal with Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && backdrop.style.display === 'flex') {
+        backdrop.style.display = 'none';
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Small: handle the header shrinking when scrolling (optional nice touch)
+    const topbar = document.querySelector('.topbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const cur = window.scrollY;
+      if (cur > 40 && cur > lastScroll) {
+        topbar.style.transform = 'translateY(-6px)';
+        topbar.style.transition = 'transform .2s ease-out';
+      } else {
+        topbar.style.transform = 'translateY(0)';
+      }
+      lastScroll = cur;
+    });
+  </script>
+</body>
+</html>

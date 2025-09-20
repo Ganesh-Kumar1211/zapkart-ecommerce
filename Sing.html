@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZapKart.in</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #232f3e;  /* Amazon-style dark header */
+    }
+
+    /* Logo */
+    .logo img {
+      width: 20px;  /* fixed width */
+      height: auto;
+    }
+
+    /* Search bar */
+    .search-bar {
+      flex: 1;
+      max-width: 500px; /* control search box width */
+      display: flex;
+      margin: 0 20px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: orange;
+      box-shadow: 0 0 4px rgba(255,165,0,0.6);
+    }
+
+    .search-bar button {
+      background: orange;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-bar button img {
+      width: 18px;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Logo -->
+    <div class="logo">
+      <img src="mobiles/home (1).png" alt="ZapKart Logo">
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search ZapKart.in">
+      <button>
+        <img src="kitchen/magnifying-glass.png" alt="Search">
+      </button>
+    </div>
+  </header>
+</body>
+</html>

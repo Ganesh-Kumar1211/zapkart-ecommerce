@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Container</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #febd69;
+      margin: 0;
+      padding: 20px;
+    }
+    
+     /* HEADER */
+    header {
+      background-color: #131921;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+     /* Language Dropdown */
+    .lang-select {
+      background: #131921;
+      color:orange;
+      font-size: 12px;
+      padding: 3px 3px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-select:focus {
+      outline: none;
+      border: 1px solid orange;
+    }
+
+    /*home logo*/
+
+     header .logos {
+        width: 25px;
+        height: 25px;
+      }
+
+    header .logo {
+      font-size: 15px;
+      font-weight: bold;
+      color: orange;
+    }
+
+    /* control search box width */
+
+   .search-bar {
+      flex: 1;
+      max-width: 400px; 
+      display: flex;
+      margin: 0 20px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 4px 8px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: orange;
+      box-shadow: 0 0 4px rgba(255,165,0,0.6);
+    }
+
+    .search-bar button {
+      background: orange;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-bar button img {
+      width: 18px;
+      height: 18px;
+    }
+    header .icons {
+      font-size: 12px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* NAV */
+    nav {
+  background: #232f3e;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+    
+}
+    /*nav*/
+   nav {
+      background: #232f3e;
+      color: white;
+      padding: 10px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 5px 10px;
+      transition: color 0.3s, background 0.3s;
+      margin: 0 5px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      display: inline-block;
+    }
+     nav a:hover {
+    color: #febd69; 
+  }
+
+
+  nav a:active {
+    color: #febd69;
+  }
+
+  
+  nav a.active {
+    color: #febd69;
+    font-weight: bold;
+  }
+   nav a:focus {
+      border-color: white;
+      background: #232f3e;
+      color: orange;
+      outline: none;
+    }
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      background: #37475a;
+      color: white;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 2px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      color: #333;
+      width: 250px;
+      max-height: 400px; 
+      overflow-y: auto; 
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu h3 {
+      margin: 0;
+      padding: 10px;
+      background: #f7f5f5;
+      font-size: 14px;
+      color: #070707;
+      position: sticky; 
+      top: 0;
+      z-index: 10;
+    }
+    .category-list {
+      display: flex;
+      flex-direction: column;
+
+      width: 150px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .category-item {
+      padding: 8px;
+      margin: 4px 0;
+      background:rgb(106, 192, 221);
+      text-decoration: none;
+      color: black;
+      border-radius: 5px;
+      display: block; 
+      text-align: center;
+
+    }
+    .category-item:hover {
+      background: rgb(8, 8, 8);
+      color: white;
+    }
+    
+    /* SLIDER */
+    
+.carousel-section {
+  background:  #febd69;         
+  padding: 20px;             
+  margin: 20px auto;         
+  border-radius: 10px;      
+  max-width: 1200px;         
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carousel-section img {
+  border-radius: 10px;
+  height: 350px;             
+  object-fit: cover;        
+}
+
+    .section {
+     background: linear-gradient(to bottom,#1e90ff,#d9e0e3,rgb(247, 246, 246));
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+/*<-background: linear-gradient(to bottom,#f5f5dc,#d9e0e3,#1e90ff);*/
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .section-header a {
+      font-size: 14px;
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    .product-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+
+    .product-row::-webkit-scrollbar {
+      height: 8px;
+    }
+    .product-row::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+   
+
+    .product {
+      flex: 0 0 auto;
+      width: 150px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      padding: 5px;
+    }
+
+    .product p {
+      font-size: 14px;
+      margin-top: 5px;
+      color: #080707;
+    }
+
+     /* FOOTER */
+    footer {
+      background: #131921;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+      <!-- HEADER -->
+  <header>
+    <div class="logo">ZapKart.in</div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search ZapKart.in">
+      <button>
+        <img src="kitchen/magnifying-glass.png" alt="Search">
+      </button>
+    </div>
+
+     <div class="lang">
+      <select class="lang-select">
+        
+        <option>English</option>
+        <option>Tamil</option>
+        <option>Hindi</option>
+        <option>Malayalam</option>
+      </select>
+    </div>
+      
+    <div class="icons">
+     <a href="Zapkart.html"><img  src="mobiles/home (1).png" style="cursor: pointer;" alt="" class="logos" /></a>
+      <a href="login.html">Sign in</a>
+      <a href="cartlaptop.html">
+      <img src="mobiles/ecommerce.png" alt="Cart" class="logos" />
+    </a>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+  <div class="dropdown">
+  <div class="dropdown-toggle">☰ALL</div>
+  <div class="dropdown-menu">
+
+    <h3>Mobiles</h3>
+    <div class="category-list">
+      <a href="VivoAll.html" class="category-item">Vivo</a>
+      <a href="SumsungAll.html" class="category-item">Samsung</a>
+      <a href="iphoneAll.html" class="category-item">iPhone</a>
+      <a href="GoogleAll.html" class="category-item">Google Pixel</a>
+    </div>
+
+    <h3>Electronics</h3>
+    <div class="category-list">
+      <a href="SpeakerAll.html" class="category-item">Fan & Mixee</a>
+      <a href="LaptopAll.html" class="category-item">Laptops</a>
+      <a href="WasingMcAll.html" class="category-item">Fridgh & M/C</a>
+      <a href="WatchesAll.html" class="category-item">Smart Watch & TV</a>
+    </div>
+
+    <h3>Fashion</h3>
+    <div class="category-list">
+      <a href="shophead.html" class="category-item">Perfume</a>
+      <a href="handbag.html" class="category-item">Handbags</a>
+      <a href="shoesAll.html" class="category-item">Shoes</a>
+      <a href="Sunscreen.html" class="category-item">Sunscreen</a>
+    </div>
+
+    <h3>Home & Kitchen</h3>
+    <div class="category-list">
+      <a href="VesselsAll.html" class="category-item">Vessels Items</a>
+      <a href="PlasticAll.html" class="category-item">Plastic Items</a>
+      <a href="JuiceAll.html" class="category-item">Juice Makker</a>
+      <a href="StoveAll.html" class="category-item">Stove</a>
+    </div>
+
+  </div>
+</div>
+
+    <a href="demode.html">Deals</a>
+    <a href="Custom.html">Customer Service</a>
+    <a href="mobiles.html">Mobiles</a>
+    <a href="fashion.html">Fashion</a>
+    <a href="electro.html">Electronics</a>
+    <a href="kitchenn.html">Home & kitchen Appliances </a>
+  </nav>
+
+             <!-- product SECTION -->
+  
+  <div class="section">
+    <div class="section-header">
+      <h2>Shoes Section</h2>
+    </div> 
+    <div class="product-row">
+      <div class="product"><img src="mobiles/fashion/gray shoe.jpg " alt="Fogg"><p> O2 Shoes  </p></div>
+      <div class="product"><img src=" mobiles/fashion/sport shoe.jpg" alt="CR7"><p>Men's Combo Pack </p></div>
+      <div class="product"><img src="mobiles/fashion/blue-shoe.webp " alt="Deodorant"><p>Running Shoes </p></div>
+      <div class="product"><img src=" mobiles/fashion/shoee.jpg" alt="Perfume"><p>Sport Shoes </p></div> 
+      <div class="product"><img src="Allitems/white Sneakers shoes.png " alt="CR7 Set"><p> White Sneakers</p></div>
+      
+           
+    </div>
+  </div>
+  
+   <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Amazon Clone Practice | All Rights Reserved</p>
+  </footer>
+ 
+</body>
+</html>

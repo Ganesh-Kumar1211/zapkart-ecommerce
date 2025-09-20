@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+     body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background:  #febd69;
+    }
+                                                                             
+    /* HEADER */
+    header {
+      background-color: #131921;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+      /* Language Dropdown */
+    .lang-select {
+      background: #131921;
+      color:orange;
+      font-size: 12px;
+      padding: 3px 3px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-select:focus {
+      outline: none;
+      border: 1px solid orange;
+    }
+
+    /*home logo*/
+
+     header .logos {
+        width: 25px;
+        height: 25px;
+      }
+
+    header .logo {
+      font-size: 15px;
+      font-weight: bold;
+      color: orange;
+    }
+
+    /* control search box width */
+
+   .search-bar {
+      flex: 1;
+      max-width: 400px; 
+      display: flex;
+      margin: 0 20px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 4px 8px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: orange;
+      box-shadow: 0 0 4px rgba(255,165,0,0.6);
+    }
+
+    .search-bar button {
+      background: orange;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-bar button img {
+      width: 18px;
+      height: 18px;
+    }
+    header .icons {
+      font-size: 12px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* NAV */
+    nav {
+      background: #232f3e;
+      color: white;
+      padding: 10px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 5px 10px;
+      transition: color 0.3s, background 0.3s;
+      margin: 0 5px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      display: inline-block;
+    }
+     nav a:hover {
+    color: #febd69; 
+  }
+
+
+  nav a:active {
+    color: #febd69;
+  }
+
+  
+  nav a.active {
+    color: #febd69;
+    font-weight: bold;
+  }
+   nav a:focus {
+      border-color: white;
+      background: #232f3e;
+      color: orange;
+      outline: none;
+    }
+
+     /* DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      background: #37475a;
+      color: white;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 2px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      color: #333;
+      width: 250px;
+      max-height: 400px; 
+      overflow-y: auto; 
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu h3 {
+      margin: 0;
+      padding: 10px;
+      background: #f7f5f5;
+      font-size: 14px;
+      color: #070707;
+      position: sticky; 
+      top: 0;
+      z-index: 10;
+    }
+    .category-list {
+      display: flex;
+      flex-direction: column;
+
+      width: 150px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .category-item {
+      padding: 8px;
+      margin: 4px 0;
+      background:rgb(106, 192, 221);
+      text-decoration: none;
+      color: black;
+      border-radius: 5px;
+      display: block; 
+      text-align: center;
+
+    }
+    .category-item:hover {
+      background: rgb(8, 8, 8);
+      color: white;
+    }
+
+    
+    /* SLIDER */
+
+
+.carousel-section {
+  background:  #febd69;          
+  padding: 20px;             
+  margin: 20px auto;         
+  border-radius: 10px;       
+  max-width: 1200px;        
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carousel-section img {
+  border-radius: 10px;
+  height: 350px;             
+  object-fit: cover;         
+}
+
+
+                                /* mobile page */
+   
+
+   
+    .container {
+      width: 140%; 
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      grid-template-rows: repeat(4 1fr); 
+      gap: 30px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: scale(1.02);
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product h5{
+        color: gold;
+    }
+
+    .product h5, 
+    .product p, 
+    .product h6, 
+    .price {
+      margin: 6px 0;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .price {
+      color: rgb(16, 94, 237);
+      font-weight: bold;
+    }
+
+    .btn {
+        
+      cursor: pointer;
+      padding: 8px;
+      margin-top: auto;
+      background: rgb(16, 93, 237);
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.3s;
+      font-size: 14px;
+      display: block;
+    }
+
+    .btn:hover {
+      color: #fff;
+      background: #0a0a0a;
+    }
+     /* FOOTER */
+    footer {
+      background: #131921;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    h1{
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+    <header>
+    <div class="logo">ZapKart.in</div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search ZapKart.in">
+      <button>
+        <img src="kitchen/magnifying-glass.png" alt="Search">
+      </button>
+    </div>
+
+     <div class="lang">
+      <select class="lang-select">
+        
+        <option>English</option>
+        <option>Tamil</option>
+        <option>Hindi</option>
+        <option>Malayalam</option>
+      </select>
+    </div>
+      
+
+    <div class="icons">
+     <a href="Zapkart.html"><img  src="mobiles/home (1).png" style="cursor: pointer;" alt="" class="logos" /></a>
+      <a href="login.html">Sign in</a>
+     <img  src="mobiles/ecommerce.png" alt="" class="logos" />
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+     <div class="dropdown">
+    <div class="dropdown-toggle">☰ALL</div>
+    <div class="dropdown-menu">
+
+     <h3>Mobiles</h3>
+    <div class="category-list">
+      <a href="VivoAll.html" class="category-item">Vivo</a>
+      <a href="SumsungAll.html" class="category-item">Samsung</a>
+      <a href="iphoneAll.html" class="category-item">iPhone</a>
+      <a href="GoogleAll.html" class="category-item">Google Pixel</a>
+    </div>
+
+    <h3>Electronics</h3>
+    <div class="category-list">
+      <a href="SpeakerAll.html" class="category-item">Fan & Mixee</a>
+      <a href="LaptopAll.html" class="category-item">Laptops</a>
+      <a href="WasingMcAll.html" class="category-item">Fridgh & M/C</a>
+      <a href="WatchesAll.html" class="category-item">Smart Watch & TV</a>
+    </div>
+
+    <h3>Fashion</h3>
+    <div class="category-list">
+      <a href="shophead.html" class="category-item">Perfume</a>
+      <a href="handbag.html" class="category-item">Handbags</a>
+      <a href="shoesAll.html" class="category-item">Shoes</a>
+      <a href="Sunscreen.html" class="category-item">Sunscreen</a>
+    </div>
+
+    <h3>Home & Kitchen</h3>
+    <div class="category-list">
+      <a href="VesselsAll.html" class="category-item">Vessels Items</a>
+      <a href="PlasticAll.html" class="category-item">Plastic Items</a>
+      <a href="JuiceAll.html" class="category-item">Juice Makker</a>
+      <a href="StoveAll.html" class="category-item">Stove</a>
+    </div>
+      
+    </div>
+  </div>
+
+</div>
+
+    
+    <a href="demode.html">Deals</a>
+    <a href="Custom.html">Customer Service</a>
+    <a href="mobiles.html">Mobiles</a>
+    <a href="fashion.html">Fashion</a>
+    <a href="electro.html">Electronics</a>
+    <a href="kitchenn.html">Home & kitchen Appliances </a>
+  </nav>
+
+                                   <!--carousel -->
+
+
+  <!-- NAVIGATION -->
+<nav>
+  <!-- your nav content -->
+</nav>
+
+<!-- CAROUSEL SECTION -->
+<section class="carousel-section">
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src=" mobiles/fashion/Diwali-Banner.jpeg" class="d-block w-100" alt="shoe">
+      </div>
+
+      <div class="carousel-item">
+        <img src="mobiles/Banners/electro banner.jpg" class="d-block w-100" alt="cons">
+      </div>
+
+      <div class="carousel-item">
+        <img src=" mobiles/Banners/shopee eltro.jpg" class="d-block w-100" alt="shoe">
+      </div>
+
+      
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+
+                      <!-- mobile container -->
+                         <h1>ELECTRONICS ITEMS</h1>
+
+  <div class="container">
+    <!-- Product 1 -->
+    <div class="product">
+      <img src="mobiles/electronis/washiing machine top.jpg" alt="Product 1">
+      <h5>★★★★★</h5>
+      <p>IFB 10 kg 5 Star Fully-Automatic Top Loading Washing Machine</p>
+      <h6>EMI starts at ₹5999. No Cost EMI available</h6>
+      <div class="price">₹29,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+      <img src="mobiles/electronis/washing machine.png" alt="Product 2">
+      <h5>★★★★☆</h5>
+      <p>Buy, Shop, Compare LG 11.0 kg, Front Load Washing Machine with AI Direct Drive</p>
+      <h6>EMI starts at ₹6,300. No Cost EMI available</h6>
+      <div class="price">₹49,899</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product">
+      <img src="mobiles/electronis/frgth 1.jpg" alt="Product 3">
+      <h5>★★★☆☆</h5>
+      <p>Geekman Double-Door Compact Fridge with Freezer, 3.5 Cu. Ft. Capacity and 7-Level</p>
+      <h6>EMI starts at ₹5,320. No Cost EMI available</h6>
+      <div class="price">₹4,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product">
+      <img src="mobiles/electronis/frigth 2.jpg" alt="Product 4">
+      <h5>★★★★★</h5>
+      <p>Mini Fridge For Dorm WANAI 5.0 Cu.ft Mini Refrigerator With Freezer 7 Settings Temp.</p>
+      <h6>EMI starts at ₹7,320. No Cost EMI available</h6>
+      <div class="price">₹4,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+     <!-- Product 5 -->
+    <div class="product">
+      <img src="mobiles/electronis/laptop 7.jpg" alt="Product 1">
+      <h5>★★★★★</h5>
+      <p>Microsoft New Surface Laptop (7th Edition) - Windows 11 Home Copilot + PC - 13.8” LCD</p>
+      <h6>EMI starts at ₹6,500. No Cost EMI available</h6>
+      <div class="price">₹1,9,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product">
+      <img src="mobiles/electronis/game lop.webp" alt="Product 2">
+      <h5>★★★★☆</h5>
+      <p>MSI Thin 15 Gaming Laptop Intel Core i7-12650H, 16GB RAM, 1TB NVMe SSD, 15.6" FHD 144Hz Gaming Laptop, </p>
+      
+      <div class="price">₹75,900.00 </div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="product">
+      <img src="mobiles/electronis/speaker 1.webp" alt="Product 3">
+      <h5>★★★☆☆</h5>
+      <p>Bluetooth Wireless Party Speaker PS30 pro - Blaupunkt Speaker – Blaupunkt India</p>
+      <h6>EMI starts at ₹300 No Cost EMI available</h6>
+      <div class="price">₹4,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="product">
+      <img src="mobiles/electronis/home speaker.webp" alt="Product 4">
+      <h5>★★★★★</h5>
+      <p>TRONICA Twin Tower 80W Bluetooth Party Speaker/Home Theater System with Remote</p>
+      <h6>EMI starts at ₹299. No Cost EMI available</h6>
+      <div class="price">₹6,599</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+     <!-- Product 9 -->
+    <div class="product">
+      <img src="mobiles/electronis/sony tv.webp" alt="Product 1">
+      <h5>★★★★★</h5>
+      <p>SONY BRAVIA 3 215.9 cm (85 inch) LED 4K Ultra HD Smart Android TV with Dolby Vision & Dolby</p>
+      <h6>₹13,180/mo* EMI Options</h6>
+      <div class="price">₹279,990</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 10 -->
+    <div class="product">
+      <img src="mobiles/electronis/lg.webp" alt="Product 2">
+      <h5>★★★★☆</h5>
+      <p>Buy LG QNED82T 139.7 cm (55 inch) QNED 4K Ultra HD Smart WebOS TV with AI Processor 4K Gen7</p>
+      <h6>₹3,530/mo* EMI Options</h6>
+      <div class="price">₹74,990.00</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 11 -->
+    <div class="product">
+      <img src="mobiles/electronis/watch 2.jpg" alt="Product 3">
+      <h5>★★★☆☆</h5>
+      <p>Smart Watch And Earbuds Combo PADY Smart Bracelet With Wireless Bluetooth Headset Combo</p>
+      <h6>only 5 piece available</h6>
+      <div class="price">₹999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 12 -->
+    <div class="product">
+      <img src="mobiles/electronis/smart watch.avif" alt="Product 4">
+      <h5>★★★★★</h5>
+      <p>Smart Watch Bt Connect Smart Watch Bluetooth Watch Connect Phone Smart Watch With</p>
+      <h6>Three colour Available (White,Orange,Black)</h6>
+      <div class="price">₹1,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+     <!-- Product 13 -->
+    <div class="product">
+      <img src="mobiles/electronis/mixee 1.webp" alt="Product 1">
+      <h5>★★★★★</h5>
+      <p>Shop Prestige Regal Mixer Grinder 4 Jars, Black Red Online.</p>
+      <h6> Special PriceGet extra 39% off price inclusive of cashback /  EMI starts from ₹ 109/month</h6>
+      <div class="price">₹3,855</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 14 -->
+    <div class="product">
+      <img src="mobiles/electronis/mixee 2.webp" alt="Product 2">
+      <h5>★★★★☆</h5>
+      <p>BAJAJ GX 1 500 W Juicer Mixer Grinder Price in India - Buy  Mixer Grinder</p>
+      <h6>Special PriceGet extra 53% off (price inclusive of cashback/coupon)</h6>
+      <div class="price">₹2,899</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 15 -->
+    <div class="product">
+      <img src="mobiles/electronis/fan.webp" alt="Product 3">
+      <h5>★★★☆☆</h5>
+      <p>Royal Oscillating 300MM Table Fan </p>
+      <h6>Low Electricity Consumption, High Speed Performance, Noiseless Performance, Easy to Operate</h6>
+      <div class="price">₹2,799</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <!-- Product 16 -->
+    <div class="product">
+      <img src="mobiles/electronis/table fan.png" alt="Product 4">
+      <h5>★★★★★</h5>
+      <p>Table Fan | Vasanth & amp; Co</p>
+      <h6> High Speed Performance, Noiseless Performance, Easy to OperateOffer Going on for 40%</h6>
+      <div class="price">₹3,999</div>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+  </div>     
+     <!-- FOOTER -->
+  <footer>
+    <p>© 2025 ZapKart Clone Practice | All Rights Reserved</p>
+  </footer>
+
+ 
+</body>
+</html>

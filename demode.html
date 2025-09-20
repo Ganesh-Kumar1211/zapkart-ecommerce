@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Layout Practice</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: white;
+    }
+                                                                             
+    /* HEADER */
+    header {
+      background-color: #131921;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+     /* Language Dropdown */
+    .lang-select {
+      background: #131921;
+      color:orange;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-select:focus {
+      outline: none;
+      border: 1px solid orange;
+    }
+
+     /*home logo*/
+
+     header .logos {
+        width: 25px;
+        height: 25px;
+      }
+
+    header .logo {
+      font-size: 15px;
+      font-weight: bold;
+      color: orange;
+    }
+
+    
+    /* control search box width */
+
+   .search-bar {
+      flex: 1;
+      max-width: 400px; 
+      display: flex;
+      margin: 0 20px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 4px 8px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: orange;
+      box-shadow: 0 0 4px rgba(255,165,0,0.6);
+    }
+
+    .search-bar button {
+      background: orange;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-bar button img {
+      width: 18px;
+      height: 18px;
+    }
+    header .icons {
+      font-size: 12px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* NAV */
+    nav {
+      background: #232f3e;
+      color: white;
+      padding: 10px 10px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 5px 10px;
+      transition: color 0.3s, background 0.3s;
+    }
+     nav a:hover {
+    color: #febd69; 
+  }
+
+  
+  nav a:active {
+    color: #febd69;
+  }
+
+  
+  nav a.active {
+    color: #febd69;
+    font-weight: bold;
+  } nav {
+      background: #232f3e;
+      color: white;
+      padding: 10px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 5px 10px;
+      transition: color 0.3s, background 0.3s;
+      margin: 0 5px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      display: inline-block;
+    }
+     nav a:hover {
+    color: #febd69; 
+  }
+
+
+  nav a:active {
+    color: #febd69;
+  }
+
+  
+  nav a.active {
+    color: #febd69;
+    font-weight: bold;
+  }
+   nav a:focus {
+      border-color: white;
+      background: #232f3e;
+      color: orange;
+      outline: none;
+    }
+
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      background: #37475a;
+      color: white;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 2px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      color: #333;
+      width: 250px;
+      max-height: 400px; 
+      overflow-y: auto; 
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu h3 {
+      margin: 0;
+      padding: 10px;
+      background: #f7f5f5;
+      font-size: 14px;
+      color: #070707;
+      position: sticky; 
+      top: 0;
+      z-index: 10;
+    }
+    .category-list {
+      display: flex;
+      flex-direction: column;
+
+      width: 150px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .category-item {
+      padding: 8px;
+      margin: 4px 0;
+      background:rgb(106, 192, 221);
+      text-decoration: none;
+      color: black;
+      border-radius: 5px;
+      display: block; /* make the whole area clickable */
+      text-align: center;
+
+    }
+    .category-item:hover {
+      background: rgb(8, 8, 8);
+      color: white;
+    }
+   
+   .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .deal-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+
+    .deal-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .deal-card img {
+      width: 80%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .deal-info {
+      padding: 12px;
+    }
+
+    .deal-info h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #e63946;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #777;
+      margin-left: 6px;
+      font-size: 13px;
+    }
+
+    .discount {
+      background: #ff9800;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 11px;
+      margin-left: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #131921;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:  #febd69;
+    }                                              
+                                                  
+ 
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">ZapKart.in</div>
+    
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search ZapKart.in">
+      <button>
+        <img src="kitchen/magnifying-glass.png" alt="Search">
+      </button>
+    </div>
+
+     <div class="lang">
+      <select class="lang-select">
+          
+        <option>English</option>
+        <option>Tamil</option>
+        <option>Hindi</option>
+        <option>Malayalam</option>
+      </select>
+    </div>
+      
+      
+    <div class="icons">
+     <a href="Zapkart.html"><img  src="mobiles/home (1).png" style="cursor: pointer;" alt="" class="logos" /></a>
+      <a href="./login.html">Sign in</a>
+     <img  src="mobiles/ecommerce.png" alt="" class="logos" />
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="dropdown">
+    <div class="dropdown-toggle">☰ALL</div>
+    <div class="dropdown-menu">
+
+     <h3>Mobiles</h3>
+    <div class="category-list">
+      <a href="VivoAll.html" class="category-item">Vivo</a>
+      <a href="SumsungAll.html" class="category-item">Samsung</a>
+      <a href="iphoneAll.html" class="category-item">iPhone</a>
+      <a href="GoogleAll.html" class="category-item">Google Pixel</a>
+    </div>
+
+       <h3>Electronics</h3>
+    <div class="category-list">
+      <a href="SpeakerAll.html" class="category-item">Fan & Mixee</a>
+      <a href="LaptopAll.html" class="category-item">Laptops</a>
+      <a href="WasingMcAll.html" class="category-item">Fridgh & M/C</a>
+      <a href="WatchesAll.html" class="category-item">Smart Watch & TV</a>
+    </div>
+
+    <h3>Fashion</h3>
+    <div class="category-list">
+      <a href="shophead.html" class="category-item">Perfume</a>
+      <a href="handbag.html" class="category-item">Handbags</a>
+      <a href="shoesAll.html" class="category-item">Shoes</a>
+      <a href="Sunscreen.html" class="category-item">Sunscreen</a>
+    </div>
+
+    <h3>Home & Kitchen</h3>
+    <div class="category-list">
+      <a href="VesselsAll.html" class="category-item">Vessels Items</a>
+      <a href="PlasticAll.html" class="category-item">Plastic Items</a>
+      <a href="JuiceAll.html" class="category-item">Juice Makker</a>
+      <a href="StoveAll.html" class="category-item">Stove</a>
+    </div>
+    
+    </div>
+  </div>
+
+
+</div>
+
+    <a href="demode.html">Deals</a>
+    <a href="Custom.html">Customer Service</a>
+    <a href="mobiles.html">Mobiles</a>
+    <a href="fashion.html">Fashion</a>
+    <a href="electro.html">Electronics</a>
+    <a href="kitchenn.html">Home & kitchen Appliances </a>
+  </nav>
+   
+  <!---container -->
+ <div class="container">
+    <h2>Special Discounts 🔥</h2>
+    <div class="deals-grid">
+
+      <div class="deal-card">
+        <img src="mobiles/electronis/game lop.webp" alt="Laptop">
+        <div class="deal-info">
+          <h3>Gaming Laptop</h3>
+          <span class="price">₹63,999</span>
+          <span class="old-price">₹79,999</span>
+          <span class="discount">25% OFF</span>
+        </div>
+      </div>
+
+       <div class="deal-card">
+        <img src="mobiles/i 12.jpg" alt="Bag">
+        <div class="deal-info">
+          <h3>iphone 12 </h3>
+          <span class="price">₹53,130</span>
+          <span class="old-price">₹69,011</span>
+          <span class="discount">40% OFF</span>
+        </div>
+      </div>
+
+     
+
+      <div class="deal-card">
+        <img src="mobiles/vivo T.png" alt="Phone">
+        <div class="deal-info">
+          <h3>Smartphone</h3>
+          <span class="price">₹27,999</span>
+          <span class="old-price">₹34,999</span>
+          <span class="discount">20% OFF</span>
+        </div>
+      </div>
+
+       <div class="deal-card">
+        <img src="mobiles/electronis/sony tv.webp" alt="Perfume">
+        <div class="deal-info">
+          <h3>Sony TV</h3>
+          <span class="price">₹1,81,993</span>
+          <span class="old-price">₹2,79,990</span>
+          <span class="discount">35% OFF</span>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <img src="mobiles/electronis/smart watch.avif" alt="Watch">
+        <div class="deal-info">
+          <h3>Smart Watch</h3>
+          <span class="price">₹1,599</span>
+          <span class="old-price">₹1,999</span>
+          <span class="discount">20% OFF</span>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <img src="mobiles/electronis/washiing machine top.jpg" alt="Headphones">
+        <div class="deal-info">
+          <h3> Washing Machine</h3>
+          <span class="price">₹19,999</span>
+          <span class="old-price">₹29,999</span>
+          <span class="discount">42% OFF</span>
+        </div>
+      </div>
+
+     
+
+      <div class="deal-card">
+        <img src="mobiles/fashion/my-perfume.jpg " alt="Camera">
+        <div class="deal-info">
+          <h3>Luxury Perfume</h3>
+          <span class="price">₹₹999</span>
+          <span class="old-price">₹1,249</span>
+          <span class="discount">20% OFF</span>
+        </div>
+      </div>
+
+     
+
+       <div class="deal-card">
+        <img src="mobiles/fashion/sport shoe.jpg" alt="Shoes" width="80">
+        <div class="deal-info">
+          <h3>Running Shoes</h3>
+          <span class="price">₹999</span>
+          <span class="old-price">₹799</span>
+          <span class="discount">20% OFF</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+   <footer>
+    <p>© 2025 ZapKart Clone Practice | All Rights Reserved</p>
+  </footer>
+</body>
+</html>

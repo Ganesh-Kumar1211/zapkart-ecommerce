@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laptop Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(180deg, #febd69 0%, #f3f5f8 100%);
+      color: #333;
+    }
+
+  header {
+  background-color: #131921;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  position: relative;
+}
+
+header .icons {
+  flex: 0 0 auto;   
+}
+
+header .title {
+  position: absolute;   
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+header .logos {
+  width: 28px;
+  height: auto;
+  cursor: pointer;
+}
+    .container {
+         max-width: 800px;
+         margin: 30px auto;
+         padding: 0 20px;
+         }
+
+    h2 {
+         margin-bottom: 20px;
+         font-size: 24px; 
+         font-weight: 600;
+         }
+
+    table {
+         width: 100%;
+         border-collapse: collapse;
+         background: white;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+         }
+
+    th, td { 
+        padding: 15px; 
+        text-align: center; 
+        border-bottom: 1px solid #ddd; 
+    }  
+
+    th { 
+        background: #f2f2f2; 
+        font-weight: 600; 
+    }
+
+    td img { 
+        width: 70px; 
+        height: 70px; 
+        object-fit: cover; 
+        border-radius: 8px; 
+    }
+
+    .product-name { 
+        font-weight: 600; 
+        font-size: 15px; 
+    }
+
+    .price { 
+        color: #e63946; 
+        font-weight: 600; 
+    }
+    .quantity { 
+        font-size: 14px; 
+        padding: 6px 10px; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+    }
+    .total { 
+        text-align: right; 
+        margin-top: 20px; 
+        font-size: 18px; 
+        font-weight: 600; 
+    }
+    .checkout-btn { 
+        display: inline-block; 
+        margin-top: 15px; 
+        padding: 10px 20px; 
+        background: #ff9800; 
+        color: white; 
+        text-decoration: none; 
+        border-radius: 6px; 
+        font-weight: 600; 
+    }
+    .checkout-btn:hover { 
+        background: #e68900; 
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+      
+     <div class="icons">
+      <a href="./e-commerce-amazon.html">
+        <img src="mobiles/home (1).png" alt="Home" class="logos" />
+      </a>
+    </div>
+          <h5 class="title">🛒 Shopping Cart</h5>
+  </header>
+
+  <div class="container">
+    <h2>Your Items</h2>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+      <tr>
+        <td><img src="https://source.unsplash.com/100x100/?laptop" alt="Laptop"></td>
+        <td class="product-name">Gaming Laptop</td>
+        <td class="price">₹59,999</td>
+        <td><input type="number" class="quantity" value="1" min="1"></td>
+        <td class="price">₹59,999</td>
+      </tr>
+    </table>
+    <div class="total">Total: ₹59,999</div>
+    <a href="#" class="checkout-btn">Proceed to Checkout</a>  
+  </div>
+</body>
+</html>
